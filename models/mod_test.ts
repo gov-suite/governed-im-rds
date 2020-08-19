@@ -1,4 +1,4 @@
-import * as tm from "./test-model.im.ts";
+import * as tm from "./test-model.gim.ts";
 import { testingAsserts as ta } from "./deps-test.ts";
 
 Deno.test("TestModelStructure validation", async () => {
