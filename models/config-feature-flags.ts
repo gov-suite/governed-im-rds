@@ -70,7 +70,7 @@ export class ConfigurationValue extends gimTyp.TypicalPersistentEntity {
   readonly party: gimc.BelongsTo<Party>;
   readonly masterConfiguration: gimc.BelongsTo<MasterConfiguration>;
   readonly configValue: gimc.Json;
-  readonly isMultiValue: gimc.Integer;
+  readonly isMultiValue: gimc.Boolean;
   readonly nameAs: gimc.Text;
   readonly description: gimc.Text;
 
@@ -88,7 +88,7 @@ export class ConfigurationValue extends gimTyp.TypicalPersistentEntity {
           this,
         );
     this.configValue = this.Json("value");
-    this.isMultiValue = this.integer("is_MultiValue");
+    this.isMultiValue = this.boolean("is_MultiValue");
     this.nameAs = this.text("nameas");
     this.description = this.text("description");
 
