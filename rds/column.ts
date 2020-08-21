@@ -123,6 +123,9 @@ export class IntegerColumn extends AbstractPersisentColumn {
 export class JsonColumn extends AbstractPersisentColumn {
 }
 
+export class BooleanColumn extends AbstractPersisentColumn {
+}
+
 export class JsonbColumn extends AbstractPersisentColumn {
 }
 
@@ -207,6 +210,9 @@ export class DateTimeTransientColumn extends AbstractTransientColumn {
 }
 
 export class IntegerTransientColumn extends AbstractTransientColumn {
+}
+
+export class BooleanTransientColumn extends AbstractTransientColumn {
 }
 
 export class JsonTransientColumn extends AbstractTransientColumn {
