@@ -1,5 +1,5 @@
 export * from "./account.ts";
-export * from "./asset.ts";
+export * from "./resource.ts";
 export * from "./association.ts";
 export * from "./case-management-routines.ts";
 export * from "./case-management.ts";
