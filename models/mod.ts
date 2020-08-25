@@ -13,3 +13,4 @@ export * from "./organization.ts";
 export * from "./party.ts";
 export * from "./person-routines.ts";
 export * from "./person.ts";
+export * from "./plpgsql-check-result.ts";
