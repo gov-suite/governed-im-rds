@@ -18,6 +18,7 @@ class TestModelStructure extends gimTyp.TypicalInfoModelStructure {
   readonly configFFF: models.ConfigFeatureFlagFactory;
   readonly colpivotFactory: models.ColpivotFactory;
   readonly jsonSchemaF: models.JsonSchemaFactory;
+  readonly plPgSqlCheckF: models.PlPgSqlCheckFactory;
 
   constructor(readonly params: gimTyp.TypicalInfoModelStructParams) {
     super(params);
@@ -42,7 +43,7 @@ class TestModelStructure extends gimTyp.TypicalInfoModelStructure {
     );
     this.colpivotFactory = new models.ColpivotFactory(params);
     this.jsonSchemaF = new models.JsonSchemaFactory(params);
-
+    this.plPgSqlCheckF = new models.PlPgSqlCheckFactory(params);
     this.namespace = params.entityParams.namespace;
     this.entities = [
       ...params.prependEntities,
@@ -78,6 +79,7 @@ class TestModelStructure extends gimTyp.TypicalInfoModelStructure {
       this.colpivotFactory.createColpivotFunc,
       this.jsonSchemaF.validateJsonSchemaType,
       this.jsonSchemaF.validateJsonSchema,
+      this.plPgSqlCheckF.plPgSqlCheckResult,
       ...params.appendEntities,
     ];
     this.finalize();
