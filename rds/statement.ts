@@ -10,8 +10,8 @@ export interface SqlStatement {
   readonly persistAsName?: string;
 }
 
-export function isSqlStatement(o: any): o is SqlStatement {
-  return "isSqlStatement" in o;
+export function isSqlStatement(o: unknown): o is SqlStatement {
+  return o && typeof o === "object" && "isSqlStatement" in o;
 }
 
 export interface TabularStatement<T extends gimc.TransientEntity> {
@@ -27,9 +27,9 @@ export interface TabularStatementSqlSupplier<T extends gimc.TransientEntity> {
 }
 
 export function isTabularStatementSqlSupplier<T extends gimc.TransientEntity>(
-  o: any,
+  o: unknown,
 ): o is TabularStatementSqlSupplier<T> {
-  return "tabularSqlStatement" in o;
+  return o && typeof o === "object" && "tabularSqlStatement" in o;
 }
 
 export class DefaultTabularStatement<T extends gimc.TransientEntity>

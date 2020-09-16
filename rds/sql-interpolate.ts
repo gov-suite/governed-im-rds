@@ -54,7 +54,9 @@ export interface InterpolateWithEntities {
 
 export type InterpolateEntityAttrNamesInSqlWith =
   | InterpolateWithEntities
+  // deno-lint-ignore ban-types
   | object[]
+  // deno-lint-ignore ban-types
   | object;
 
 export interface InterpolateEntityAttrNamesInSqlParams {

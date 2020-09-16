@@ -20,9 +20,10 @@ export interface TypeDefnSqlSupplier<T extends gimc.TransientEntity> {
 }
 
 export function isTypeDefnSqlSupplier<T extends gimc.TransientEntity>(
-  o: any,
+  o: unknown,
 ): o is TypeDefnSqlSupplier<T> {
-  return "isTypeDefn" in o || "typeDefnSqlStatement" in o;
+  return o && typeof o === "object" &&
+    ("isTypeDefn" in o || "typeDefnSqlStatement" in o);
 }
 
 export class DefaultTypeDefn<T extends gimc.TransientEntity>
