@@ -3,7 +3,7 @@ import {
   govnImCore as gimc,
   govnImTypical as gimTyp,
 } from "./deps.ts";
-import { PartyRelatedInfoModelParams, Party } from "./party.ts";
+import type { PartyRelatedInfoModelParams, Party } from "./party.ts";
 
 export class ResourceType extends gimc.DefaultEnumeration<ResourceType> {
   static readonly values = new class

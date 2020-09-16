@@ -1,4 +1,4 @@
-import * as ctx from "./context.ts";
+import type * as ctx from "./context.ts";
 import {
   govnImCore as gimc,
   textInflect as infl,
@@ -6,9 +6,9 @@ import {
   textWhitespace as tw,
   valueMgr as vm,
 } from "./deps.ts";
-import * as dia from "./dialect.ts";
-import * as st from "./sql-type.ts";
-import * as tbl from "./table.ts";
+import type * as dia from "./dialect.ts";
+import type * as st from "./sql-type.ts";
+import type * as tbl from "./table.ts";
 
 function entityAttrFetcher(
   params: ti.InterpolatePropFetcherParams,

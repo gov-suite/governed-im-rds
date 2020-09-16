@@ -2,7 +2,7 @@ import {
   govnImCore as gimc,
   govnImTypical as gimTyp,
 } from "./deps.ts";
-import { Party, PartyRelatedInfoModelParams } from "./party.ts";
+import type { Party, PartyRelatedInfoModelParams } from "./party.ts";
 
 export class ConfigurationScope extends gimTyp.TypicalPersistentEntity {
   readonly configCode: gimc.Text;

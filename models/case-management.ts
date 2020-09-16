@@ -3,8 +3,8 @@ import {
   govnImCore as gimc,
   govnImTypical as gimTyp,
 } from "./deps.ts";
-import { PartyRelatedInfoModelParams } from "./party.ts";
-import { PersonFactory } from "./person.ts";
+import type { PartyRelatedInfoModelParams } from "./party.ts";
+import type { PersonFactory } from "./person.ts";
 
 export class RequestType extends gimc.DefaultEnumeration<RequestType> {
   static readonly values = new class

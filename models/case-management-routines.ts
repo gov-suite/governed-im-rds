@@ -1,6 +1,6 @@
 import * as rds from "../rds/mod.ts";
 import * as rdsTyp from "../typical/mod.ts";
-import * as cm from "./case-management.ts";
+import type * as cm from "./case-management.ts";
 import { govnImCore as gimc } from "./deps.ts";
 
 export class CreateIssueDescriptionMasterProc

@@ -2,7 +2,7 @@ import {
   govnImCore as gimc,
   govnImTypical as gimTyp,
 } from "./deps.ts";
-import { Party, PartyRelatedInfoModelParams } from "./party.ts";
+import type { Party, PartyRelatedInfoModelParams } from "./party.ts";
 
 export class ContactType extends gimc.DefaultEnumeration<ContactType> {
   static readonly values = new class

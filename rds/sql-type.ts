@@ -1,10 +1,10 @@
-import * as col from "./column.ts";
-import * as rdbmsCtx from "./context.ts";
-import {
+import type * as col from "./column.ts";
+import type * as rdbmsCtx from "./context.ts";
+import type {
   govnImCore as gimc,
   valueMgr as vm,
 } from "./deps.ts";
-import * as tbl from "./table.ts";
+import type * as tbl from "./table.ts";
 
 export type SqlType = vm.TextValue;
 
@@ -49,6 +49,7 @@ export interface AttrSqlTypesConstructor {
 }
 
 export interface AttrSqlTypesErrorHandler {
+  // deno-lint-ignore no-explicit-any
   (forSrc: AttrMapperSource, msg: string, ...args: any[]): void;
 }
 

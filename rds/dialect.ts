@@ -1,12 +1,12 @@
-import * as rdbmsCtx from "./context.ts";
+import type * as rdbmsCtx from "./context.ts";
 import {
   artfPersist as ap,
   govnImCore as gimc,
   textInflect as infl,
 } from "./deps.ts";
-import * as ns from "./naming.ts";
-import * as ty from "./sql-type.ts";
-import * as tbl from "./table.ts";
+import type * as ns from "./naming.ts";
+import type * as ty from "./sql-type.ts";
+import type * as tbl from "./table.ts";
 
 export type DialectName = infl.InflectableValue;
 
@@ -31,8 +31,8 @@ export interface Dialect {
   ): ap.TextArtifact;
 }
 
-export function isDialect(o: any): o is Dialect {
-  return "isDialect" in o;
+export function isDialect(o: unknown): o is Dialect {
+  return o && typeof o === "object" && "isDialect" in o;
 }
 
 // Method signature for transform/rds/dialect.ts.storeValueSQL

@@ -1,5 +1,5 @@
-import * as rdbmsCtx from "./context.ts";
-import { govnImCore as gimc } from "./deps.ts";
+import type * as rdbmsCtx from "./context.ts";
+import type { govnImCore as gimc } from "./deps.ts";
 import * as stmt from "./statement.ts";
 
 export type TypeDefnName = string;

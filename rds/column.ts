@@ -1,7 +1,7 @@
-import * as rdbmsCtx from "./context.ts";
+import type * as rdbmsCtx from "./context.ts";
 import { govnImCore as gimc } from "./deps.ts";
-import * as sqty from "./sql-type.ts";
-import { Table, TableColumn } from "./table.ts";
+import type * as sqty from "./sql-type.ts";
+import type { Table, TableColumn } from "./table.ts";
 
 export type ColumnName = string;
 export type ColumnStoreValueSQL = string;

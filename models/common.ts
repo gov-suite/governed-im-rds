@@ -85,11 +85,14 @@ export class DefaultInfoModelStructParams
             entity,
             this.recordStatus.defaultValue,
           );
+
         // force the attributes into the objects so that {entity.createdAt}
         // and similar accessors work in string interpolation and in TypeScript
         // IDEs like this:
         // const common = (peron as any) as CommonTypicalEntityAttributes
         // common.derive(entity)
+
+        // deno-lint-ignore no-explicit-any
         const entityObj = entity as any;
         entityObj.createdAt = createdAtAttr;
         entityObj.updatedOn = updatedOnAttr;

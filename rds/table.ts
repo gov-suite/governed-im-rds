@@ -1,6 +1,6 @@
-import * as col from "./column.ts";
-import { RdbmsEngineContext } from "./context.ts";
-import { govnImCore as gimc } from "./deps.ts";
+import type * as col from "./column.ts";
+import type { RdbmsEngineContext } from "./context.ts";
+import type { govnImCore as gimc } from "./deps.ts";
 
 export type TableName = string;
 

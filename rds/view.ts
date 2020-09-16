@@ -1,6 +1,6 @@
-import * as col from "./column.ts";
-import * as rdbmsCtx from "./context.ts";
-import { govnImCore as gimc } from "./deps.ts";
+import type * as col from "./column.ts";
+import type * as rdbmsCtx from "./context.ts";
+import type { govnImCore as gimc } from "./deps.ts";
 
 export type ViewName = string;
 
@@ -10,8 +10,8 @@ export interface ViewBodySqlQuery {
   readonly persistAsName?: string;
 }
 
-export function isViewBodySqlQuery(o: any): o is ViewBodySqlQuery {
-  return "isViewBodySqlQuery" in o;
+export function isViewBodySqlQuery(o: unknown): o is ViewBodySqlQuery {
+  return o && typeof o === "object" && "isViewBodySqlQuery" in o;
 }
 
 export interface CreateViewStatement {
@@ -20,8 +20,8 @@ export interface CreateViewStatement {
   readonly persistAsName?: string;
 }
 
-export function isCreateViewStatement(o: any): o is CreateViewStatement {
-  return "isCreateViewStatement" in o;
+export function isCreateViewStatement(o: unknown): o is CreateViewStatement {
+  return o && typeof o === "object" && "isCreateViewStatement" in o;
 }
 
 export interface View<T extends gimc.TransientEntity> {
@@ -38,9 +38,9 @@ export interface SqlViewQuerySupplier<T extends gimc.TransientEntity> {
 }
 
 export function isSqlViewQuerySupplier<T extends gimc.TransientEntity>(
-  o: any,
+  o: unknown,
 ): o is SqlViewQuerySupplier<T> {
-  return "sqlViewQuery" in o;
+  return o && typeof o === "object" && "sqlViewQuery" in o;
 }
 
 export class DefaultView<T extends gimc.TransientEntity> implements View<T> {

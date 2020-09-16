@@ -1,21 +1,25 @@
-import { ColumnName, QualifiedColumnName } from "./column.ts";
-import { RdbmsEngineContext, RdbmsModelContext } from "./context.ts";
-import {
+import type { ColumnName, QualifiedColumnName } from "./column.ts";
+import type { RdbmsEngineContext, RdbmsModelContext } from "./context.ts";
+import type {
   artfPersist as ap,
   govnImCore as gimc,
   textInflect as infl,
   valueMgr as vm,
 } from "./deps.ts";
-import { RdbmsModelStruct } from "./model.ts";
-import {
+import type { RdbmsModelStruct } from "./model.ts";
+import type {
   StoredProcedureFunctionWrapper,
   StoredRoutineCode,
   StoredRoutineName,
 } from "./routine.ts";
-import { SqlStatement } from "./statement.ts";
-import { TableName } from "./table.ts";
-import { TypeDefnName } from "./type-defn.ts";
-import { CreateViewStatement, ViewBodySqlQuery, ViewName } from "./view.ts";
+import type { SqlStatement } from "./statement.ts";
+import type { TableName } from "./table.ts";
+import type { TypeDefnName } from "./type-defn.ts";
+import type {
+  CreateViewStatement,
+  ViewBodySqlQuery,
+  ViewName,
+} from "./view.ts";
 
 export interface ArtifactPersistenceNamingStrategy {
   modelPrimaryArtifactName(
@@ -95,6 +99,6 @@ export interface NamingStrategyConstructor {
   new (odnt?: ObjectDefnNameType): NamingStrategy;
 }
 
-export function isNamingStrategy(o: any): o is NamingStrategy {
-  return "isNamingStrategy" in o;
+export function isNamingStrategy(o: unknown): o is NamingStrategy {
+  return o && typeof o === "object" && "isNamingStrategy" in o;
 }

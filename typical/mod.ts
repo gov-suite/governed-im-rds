@@ -1,4 +1,4 @@
-import * as rds from "../rds/mod.ts";
+import type * as rds from "../rds/mod.ts";
 import {
   govnImCore as gimc,
   govnImTypical as gimTyp,
@@ -36,7 +36,7 @@ export abstract class TypicalStoredRoutineEntity
 }
 
 export function isTypicalStoredRoutineEntity(
-  o: any,
+  o: unknown,
 ): o is TypicalStoredRoutineEntity {
-  return "isTypicalStoredRoutineEntity" in o;
+  return o && typeof o === "object" && "isTypicalStoredRoutineEntity" in o;
 }

@@ -1,10 +1,10 @@
-import { ContactRelatedInfoModelParams } from "./contact.ts";
+import type { ContactRelatedInfoModelParams } from "./contact.ts";
 import {
   govnImCore as gimc,
   govnImTypical as gimTyp,
 } from "./deps.ts";
 import { CreateOrganizationProc } from "./organization-routines.ts";
-import { Party, PartyRelatedInfoModelParams } from "./party.ts";
+import type { Party, PartyRelatedInfoModelParams } from "./party.ts";
 
 export class OrganizationType
   extends gimc.DefaultEnumeration<OrganizationType> {

@@ -3,8 +3,8 @@ import {
   specModule as sm,
 } from "./deps.ts";
 import { Dialect, PostreSqlEngineName, SQLiteEngineName } from "./dialect.ts";
-import { RdbmsModelStruct as RdbmsModelStruct } from "./model.ts";
-import { Table } from "./table.ts";
+import type { RdbmsModelStruct as RdbmsModelStruct } from "./model.ts";
+import type { Table } from "./table.ts";
 
 export interface RdbmsEngineContext extends sm.SpecificationContext {
   isRdbmsEngineContext: true;
@@ -125,6 +125,7 @@ export const rdbmsCtxFactory = new (class {
     return dialect.name.inflect() == SQLiteEngineName.inflect();
   }
 
+  // deno-lint-ignore no-explicit-any
   public TODO(spec: sm.Specification<any>): sm.SpecificationContext {
     return {
       isContext: true,
@@ -135,6 +136,7 @@ export const rdbmsCtxFactory = new (class {
   }
 
   public rdbmsEngineContext(
+    // deno-lint-ignore no-explicit-any
     spec: sm.Specification<any>,
     dialect: Dialect,
   ): RdbmsEngineContext {

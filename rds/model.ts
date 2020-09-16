@@ -1,11 +1,11 @@
-import * as col from "./column.ts";
+import type * as col from "./column.ts";
 import * as eagsCtx from "./context.ts";
 import {
   govnImCore as gimc,
   specModule as sm,
 } from "./deps.ts";
-import * as dia from "./dialect.ts";
-import { ArtifactPersistenceNamingStrategy } from "./naming.ts";
+import type * as dia from "./dialect.ts";
+import type { ArtifactPersistenceNamingStrategy } from "./naming.ts";
 import * as sr from "./routine.ts";
 import {
   DefaultTable,
@@ -20,9 +20,13 @@ export class RdbmsModelStruct {
   readonly imStructure: gimc.InformationModelStructure;
   readonly tables: Table[] = [];
   readonly tableByName = new Map<string, Table>();
+  // deno-lint-ignore no-explicit-any
   readonly views: v.View<any>[] = [];
+  // deno-lint-ignore no-explicit-any
   readonly functions: sr.StoredFunction<any>[] = [];
+  // deno-lint-ignore no-explicit-any
   readonly procedures: sr.StoredProcedure<any>[] = [];
+  // deno-lint-ignore no-explicit-any
   readonly typeDefns: td.TypeDefn<any>[] = [];
   readonly columnByQualifiedName = new Map<string, col.PersistentColumn>();
   readonly relationships: TableColumnRelationship[] = [];
@@ -39,20 +43,20 @@ export class RdbmsModelStruct {
     const reCtx = eagsCtx.rdbmsCtxFactory.rdbmsEngineContext(spec, dialect);
     for (const entity of this.imStructure.entities) {
       if (gimc.isTransientEntity(entity) && v.isSqlViewQuerySupplier(entity)) {
-        this.registerView(reCtx, entity, entity);
+        this.registerView(reCtx, entity);
       }
 
       if (sr.isStoredRoutineEntity(entity)) {
         if (sr.isStoredFunctionCodeSupplier(entity)) {
-          this.registerStoredFunction(reCtx, entity, entity);
+          this.registerStoredFunction(reCtx, entity);
         }
         if (sr.isStoredProcedureCodeSupplier(entity)) {
-          this.registerStoredProcedure(reCtx, entity, entity);
+          this.registerStoredProcedure(reCtx, entity);
         }
       }
 
       if (gimc.isTransientEntity(entity) && td.isTypeDefnSqlSupplier(entity)) {
-        this.registerTypeDefn(reCtx, entity, entity);
+        this.registerTypeDefn(reCtx, entity);
       }
 
       if (gimc.isPersistentEntity(entity)) {
@@ -126,7 +130,6 @@ export class RdbmsModelStruct {
   protected registerView(
     reCtx: eagsCtx.RdbmsEngineContext,
     entity: gimc.TransientEntity,
-    supplier: v.SqlViewQuerySupplier<any>,
   ): void {
     const columns: col.TransientColumn[] = [];
     entity.attrs.map((e) => reCtx.dialect.sqlType(reCtx, e))
@@ -138,7 +141,6 @@ export class RdbmsModelStruct {
   protected registerTypeDefn(
     reCtx: eagsCtx.RdbmsEngineContext,
     entity: gimc.TransientEntity,
-    supplier: td.TypeDefnSqlSupplier<any>,
   ): void {
     const columns: col.TransientColumn[] = [];
     entity.attrs.map((e) => reCtx.dialect.sqlType(reCtx, e))
@@ -150,7 +152,6 @@ export class RdbmsModelStruct {
   protected registerStoredFunction(
     reCtx: eagsCtx.RdbmsEngineContext,
     entity: sr.StoredRoutineEntity,
-    supplier: sr.StoredFunctionCodeSupplier<any>,
   ): void {
     const columns: col.TransientColumn[] = [];
     const args: sr.StoredRoutineArg[] = [];
@@ -187,7 +188,6 @@ export class RdbmsModelStruct {
   protected registerStoredProcedure(
     reCtx: eagsCtx.RdbmsEngineContext,
     entity: sr.StoredRoutineEntity,
-    supplier: sr.StoredProcedureCodeSupplier<any>,
   ): void {
     const columns: col.TransientColumn[] = [];
     const args: sr.StoredRoutineArg[] = [];

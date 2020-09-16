@@ -1,8 +1,8 @@
 import * as rds from "../rds/mod.ts";
 import * as rdsTyp from "../typical/mod.ts";
-import * as c from "./contact.ts";
+import type * as c from "./contact.ts";
 import { govnImCore as gim } from "./deps.ts";
-import * as p from "./person.ts";
+import type * as p from "./person.ts";
 
 export class CreatePersonDemographicsProc
   extends rdsTyp.TypicalStoredRoutineEntity

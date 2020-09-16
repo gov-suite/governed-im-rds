@@ -1,8 +1,8 @@
 import * as rds from "../rds/mod.ts";
 import * as rdsTyp from "../typical/mod.ts";
-import * as c from "./contact.ts";
+import type * as c from "./contact.ts";
 import { govnImCore as gimc } from "./deps.ts";
-import * as o from "./organization.ts";
+import type * as o from "./organization.ts";
 
 export class CreateOrganizationProc extends rdsTyp.TypicalStoredRoutineEntity
   implements rds.StoredProcedureCodeSupplier<CreateOrganizationProc> {

@@ -1,6 +1,6 @@
-import * as col from "./column.ts";
-import * as rdbmsCtx from "./context.ts";
-import { govnImCore as gimc, valueMgr as vm } from "./deps.ts";
+import type * as col from "./column.ts";
+import type * as rdbmsCtx from "./context.ts";
+import type { govnImCore as gimc, valueMgr as vm } from "./deps.ts";
 
 export type SqlStatementName = string;
 

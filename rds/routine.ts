@@ -1,7 +1,7 @@
-import * as col from "./column.ts";
-import * as rctx from "./context.ts";
-import { govnImCore as gimc, valueMgr as vm } from "./deps.ts";
-import * as sqty from "./sql-type.ts";
+import type * as col from "./column.ts";
+import type * as rctx from "./context.ts";
+import type { govnImCore as gimc, valueMgr as vm } from "./deps.ts";
+import type * as sqty from "./sql-type.ts";
 
 export type StoredRoutineName = string;
 
@@ -11,8 +11,10 @@ export interface StoredRoutineBodyCode {
   readonly persistAsName: string;
 }
 
-export function isStoredRoutineBodyCode(o: any): o is StoredRoutineBodyCode {
-  return "isStoredRoutineBodyCode" in o;
+export function isStoredRoutineBodyCode(
+  o: unknown,
+): o is StoredRoutineBodyCode {
+  return o && typeof o === "object" && "isStoredRoutineBodyCode" in o;
 }
 
 export interface StoredRoutineCode {
@@ -21,8 +23,8 @@ export interface StoredRoutineCode {
   readonly persistAsName?: string;
 }
 
-export function isStoredRoutineCode(o: any): o is StoredRoutineCode {
-  return "isStoredRoutineCode" in o;
+export function isStoredRoutineCode(o: unknown): o is StoredRoutineCode {
+  return o && typeof o === "object" && "isStoredRoutineCode" in o;
 }
 
 export enum StoredRoutineArgMutability {
@@ -36,9 +38,9 @@ export interface StoredRoutineArgMutabilitySupplier {
 }
 
 export function isStoredRoutineArgMutabilitySupplier(
-  o: object,
+  o: unknown,
 ): o is StoredRoutineArgMutabilitySupplier {
-  return "storedRoutineArgMutability" in o;
+  return o && typeof o === "object" && "storedRoutineArgMutability" in o;
 }
 
 export interface StoredRoutineArg {
@@ -56,10 +58,12 @@ export interface StoredRoutine<T extends gimc.TransientEntity> {
   name(ctx: rctx.RdbmsEngineContext): StoredRoutineName;
 }
 
+// deno-lint-ignore no-empty-interface
 export interface StoredFunction<T extends gimc.TransientEntity>
   extends StoredRoutine<T> {
 }
 
+// deno-lint-ignore no-empty-interface
 export interface StoredProcedure<T extends gimc.TransientEntity>
   extends StoredRoutine<T> {
 }
@@ -72,9 +76,9 @@ export interface StoredFunctionCodeSupplier<T extends gimc.TransientEntity> {
 }
 
 export function isStoredFunctionCodeSupplier<T extends gimc.TransientEntity>(
-  o: any,
+  o: unknown,
 ): o is StoredFunctionCodeSupplier<T> {
-  return "storedFunctionCode" in o;
+  return o && typeof o === "object" && "storedFunctionCode" in o;
 }
 
 export interface StoredProcedureFunctionWrapper {
@@ -91,9 +95,9 @@ export interface StoredProcedureCodeSupplier<T extends gimc.TransientEntity> {
 }
 
 export function isStoredProcedureCodeSupplier<T extends gimc.TransientEntity>(
-  o: any,
+  o: unknown,
 ): o is StoredProcedureCodeSupplier<T> {
-  return "storedProcedureCode" in o;
+  return o && typeof o === "object" && "storedProcedureCode" in o;
 }
 
 export class DefaultStoredRoutine<T extends gimc.TransientEntity>
@@ -132,6 +136,6 @@ export interface StoredRoutineEntity extends gimc.TransientEntity {
   readonly argAttrs?: gimc.Attribute[];
 }
 
-export function isStoredRoutineEntity(o: any): o is StoredRoutineEntity {
-  return "isStoredRoutineEntity" in o;
+export function isStoredRoutineEntity(o: unknown): o is StoredRoutineEntity {
+  return o && typeof o === "object" && "isStoredRoutineEntity" in o;
 }
