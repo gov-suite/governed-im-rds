@@ -1,5 +1,6 @@
 import type * as rdbmsCtx from "./context.ts";
 import type { govnImCore as gimc } from "./deps.ts";
+import { safety } from "./deps.ts";
 import * as stmt from "./statement.ts";
 
 export type TypeDefnName = string;
@@ -22,8 +23,11 @@ export interface TypeDefnSqlSupplier<T extends gimc.TransientEntity> {
 export function isTypeDefnSqlSupplier<T extends gimc.TransientEntity>(
   o: unknown,
 ): o is TypeDefnSqlSupplier<T> {
-  return o && typeof o === "object" &&
-    ("isTypeDefn" in o || "typeDefnSqlStatement" in o);
+  const safeTypeDefnSqlSupplier = safety.typeGuard<TypeDefnSqlSupplier<T>>(
+    "isTypeDefn",
+    "typeDefnSqlStatement",
+  );
+  return safeTypeDefnSqlSupplier(o);
 }
 
 export class DefaultTypeDefn<T extends gimc.TransientEntity>

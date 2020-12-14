@@ -1,7 +1,4 @@
-import {
-  govnImCore as gimc,
-  govnImTypical as gimTyp,
-} from "./deps.ts";
+import { govnImCore as gimc, govnImTypical as gimTyp } from "./deps.ts";
 
 export class AccountType extends gimc.DefaultEnumeration<AccountType> {
   static readonly values = new class

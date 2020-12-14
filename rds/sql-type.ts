@@ -1,9 +1,6 @@
 import type * as col from "./column.ts";
 import type * as rdbmsCtx from "./context.ts";
-import type {
-  govnImCore as gimc,
-  valueMgr as vm,
-} from "./deps.ts";
+import type { govnImCore as gimc, valueMgr as vm } from "./deps.ts";
 import type * as tbl from "./table.ts";
 
 export type SqlType = vm.TextValue;

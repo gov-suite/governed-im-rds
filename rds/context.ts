@@ -1,7 +1,4 @@
-import {
-  contextMgr as cm,
-  specModule as sm,
-} from "./deps.ts";
+import { contextMgr as cm, specModule as sm } from "./deps.ts";
 import { Dialect, PostreSqlEngineName, SQLiteEngineName } from "./dialect.ts";
 import type { RdbmsModelStruct as RdbmsModelStruct } from "./model.ts";
 import type { Table } from "./table.ts";

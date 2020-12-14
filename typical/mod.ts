@@ -1,8 +1,5 @@
 import type * as rds from "../rds/mod.ts";
-import {
-  govnImCore as gimc,
-  govnImTypical as gimTyp,
-} from "./deps.ts";
+import { govnImCore as gimc, govnImTypical as gimTyp, safety } from "./deps.ts";
 
 export abstract class TypicalTabularStatementEntity
   extends gimTyp.TypicalTransientEntity {
@@ -35,8 +32,6 @@ export abstract class TypicalStoredRoutineEntity
   }
 }
 
-export function isTypicalStoredRoutineEntity(
-  o: unknown,
-): o is TypicalStoredRoutineEntity {
-  return o && typeof o === "object" && "isTypicalStoredRoutineEntity" in o;
-}
+export const isTypicalStoredRoutineEntity = safety.typeGuard<
+  TypicalStoredRoutineEntity
+>("isTypicalStoredRoutineEntity");

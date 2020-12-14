@@ -1,7 +1,4 @@
-import {
-  govnImCore as gimc,
-  govnImTypical as gimTyp,
-} from "./deps.ts";
+import { govnImCore as gimc, govnImTypical as gimTyp } from "./deps.ts";
 
 export interface AssocRelationshipSupplier<
   L extends gimc.Entity,

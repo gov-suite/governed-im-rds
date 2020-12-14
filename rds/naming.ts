@@ -6,6 +6,7 @@ import type {
   textInflect as infl,
   valueMgr as vm,
 } from "./deps.ts";
+import { safety } from "./deps.ts";
 import type { RdbmsModelStruct } from "./model.ts";
 import type {
   StoredProcedureFunctionWrapper,
@@ -99,6 +100,6 @@ export interface NamingStrategyConstructor {
   new (odnt?: ObjectDefnNameType): NamingStrategy;
 }
 
-export function isNamingStrategy(o: unknown): o is NamingStrategy {
-  return o && typeof o === "object" && "isNamingStrategy" in o;
-}
+export const isNamingStrategy = safety.typeGuard<NamingStrategy>(
+  "isNamingStrategy",
+);

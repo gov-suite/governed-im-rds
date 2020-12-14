@@ -1,9 +1,6 @@
 import * as rds from "../rds/mod.ts";
-import {
-  govnImCore as gimc,
-  govnImTypical as gimTyp,
-} from "./deps.ts";
-import type { PartyRelatedInfoModelParams, Party } from "./party.ts";
+import { govnImCore as gimc, govnImTypical as gimTyp } from "./deps.ts";
+import type { Party, PartyRelatedInfoModelParams } from "./party.ts";
 
 export class ResourceType extends gimc.DefaultEnumeration<ResourceType> {
   static readonly values = new class

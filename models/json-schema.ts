@@ -1,9 +1,6 @@
 import * as rds from "../rds/mod.ts";
 import * as rdsTyp from "../typical/mod.ts";
-import {
-  govnImCore as gimc,
-  govnImTypical as gimTyp,
-} from "./deps.ts";
+import { govnImCore as gimc, govnImTypical as gimTyp } from "./deps.ts";
 
 export class ValidateJsonSchemaTypeFunc
   extends rdsTyp.TypicalStoredRoutineEntity

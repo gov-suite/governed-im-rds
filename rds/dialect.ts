@@ -2,6 +2,7 @@ import type * as rdbmsCtx from "./context.ts";
 import {
   artfPersist as ap,
   govnImCore as gimc,
+  safety,
   textInflect as infl,
 } from "./deps.ts";
 import type * as ns from "./naming.ts";
@@ -31,9 +32,7 @@ export interface Dialect {
   ): ap.TextArtifact;
 }
 
-export function isDialect(o: unknown): o is Dialect {
-  return o && typeof o === "object" && "isDialect" in o;
-}
+export const isDialect = safety.typeGuard<Dialect>("isDialect");
 
 // Method signature for transform/rds/dialect.ts.storeValueSQL
 export interface PrepareValueSQL {

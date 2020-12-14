@@ -1,10 +1,7 @@
 import * as rds from "../rds/mod.ts";
 import * as rdsTyp from "../typical/mod.ts";
 import type { ContactRelatedInfoModelParams } from "./contact.ts";
-import {
-  govnImCore as gimc,
-  govnImTypical as gimTyp,
-} from "./deps.ts";
+import { govnImCore as gimc, govnImTypical as gimTyp } from "./deps.ts";
 import type { Party, PartyRelatedInfoModelParams } from "./party.ts";
 import * as pr from "./person-routines.ts";
 

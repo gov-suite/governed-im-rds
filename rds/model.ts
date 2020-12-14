@@ -1,9 +1,6 @@
 import type * as col from "./column.ts";
 import * as eagsCtx from "./context.ts";
-import {
-  govnImCore as gimc,
-  specModule as sm,
-} from "./deps.ts";
+import { govnImCore as gimc, specModule as sm } from "./deps.ts";
 import type * as dia from "./dialect.ts";
 import type { ArtifactPersistenceNamingStrategy } from "./naming.ts";
 import * as sr from "./routine.ts";
@@ -88,7 +85,7 @@ export class RdbmsModelStruct {
       reCtx,
       entity,
       (table: Table): col.PersistentColumn[] => {
-        let results: col.PersistentColumn[] = [];
+        const results: col.PersistentColumn[] = [];
         for (const a of entity.attrs) {
           const sqlType = this.dialect.sqlType(reCtx, a);
           if (!sqlType) {
