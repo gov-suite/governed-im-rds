@@ -23,11 +23,10 @@ export interface TypeDefnSqlSupplier<T extends gimc.TransientEntity> {
 export function isTypeDefnSqlSupplier<T extends gimc.TransientEntity>(
   o: unknown,
 ): o is TypeDefnSqlSupplier<T> {
-  const safeTypeDefnSqlSupplier = safety.typeGuard<TypeDefnSqlSupplier<T>>(
-    "isTypeDefn",
-    "typeDefnSqlStatement",
-  );
-  return safeTypeDefnSqlSupplier(o);
+  if (o && typeof o === "object") {
+    return ("isTypeDefn" in o || "typeDefnSqlStatement" in o);
+  }
+  return false;
 }
 
 export class DefaultTypeDefn<T extends gimc.TransientEntity>
