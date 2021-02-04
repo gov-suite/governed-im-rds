@@ -85,7 +85,7 @@ export function interpolateEntityAttrNamesInSQL(
   ctx: ctx.RdbmsEngineContext,
   params: InterpolateEntityAttrNamesInSqlParams,
 ): string {
-  let results = ti.interpolate(
+  const results = ti.interpolate(
     params.sql,
     ti.interpolationPropSupplier(
       params.with,
