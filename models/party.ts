@@ -63,6 +63,7 @@ export class Party extends gimTyp.TypicalPersistentEntity {
   static readonly systemPartyId = 1; // should match ID of initial SYSTEM party row
   readonly partyType: gimc.EnumAttribute<PartyType>;
   readonly partyName: gimc.Text;
+  readonly partyUuid: gimc.UuidText;
 
   constructor(
     readonly partyTypeEnum: PartyType,
@@ -74,7 +75,8 @@ export class Party extends gimTyp.TypicalPersistentEntity {
     );
     this.partyType = this.partyTypeEnum.createRelationship(this);
     this.partyName = this.text("party_name");
-    this.insertAttrs(this.partyName, this.partyType);
+    this.partyUuid = this.uuidText("party_uuid");
+    this.insertAttrs(this.partyName, this.partyType, this.partyUuid);
 
     this.addSeedValues(
       this.partyName.value(Party.systemPartyName),

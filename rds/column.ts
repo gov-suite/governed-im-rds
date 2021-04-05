@@ -111,6 +111,9 @@ export class PostgreSqlEncryptedTextColumn extends TextColumn {
   }
 }
 
+export class UuidColumn extends AbstractPersisentColumn {
+}
+
 export class DateColumn extends AbstractPersisentColumn {
 }
 
@@ -201,6 +204,9 @@ export class PostgreSqlEncryptedTextTransientColumn
     // TODO add check to make sure ctx is PostgreSQL Engine and wrap whatever is required
     return expr;
   }
+}
+
+export class UuidTransientColumn extends AbstractTransientColumn {
 }
 
 export class DateTransientColumn extends AbstractTransientColumn {
