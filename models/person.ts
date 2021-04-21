@@ -191,6 +191,7 @@ export class PersonDemographicsView extends rdsTyp.TypicalViewEntity
     // TODO: reuse the PersonDemographicsTypeDefn instead of copy/paste
     const person = personDemogrParams.personFactory.person;
     const land = personDemogrParams.contactFactory.land;
+    const party = personDemogrParams.partyFactory.party;
     this.insertAttrs(
       person.identity.derive(this),
       person.firstName.derive(this),
@@ -204,6 +205,7 @@ export class PersonDemographicsView extends rdsTyp.TypicalViewEntity
       land.state.derive(this),
       land.country.derive(this),
       land.zipCode.derive(this),
+      party.partyUuid.derive(this),
     );
   }
 
@@ -216,7 +218,7 @@ export class PersonDemographicsView extends rdsTyp.TypicalViewEntity
       sql: rds.interpolateEntityAttrNamesInSQL(ctx, {
         sql: `
         SELECT {person.identity}, {person:firstName}, {person:middleName}, {person:lastName}, {contactElec:details}, {person:dob}, {contactLand:line1},
-        {contactLand:line2}, {contactLand:city}, {contactLand:state}, {contactLand:country}, {contactLand:zipCode}
+        {contactLand:line2}, {contactLand:city}, {contactLand:state}, {contactLand:country}, {contactLand:zipCode}, {party:partyUuid}
         FROM {party} 
                INNER JOIN {person} ON {party.identity} = {person.identity}
                LEFT JOIN {contactLand} ON {party.identity} = {contactLand.party}
