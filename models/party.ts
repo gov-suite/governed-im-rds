@@ -60,7 +60,7 @@ export class PartyIdentifierSource
 
 export class Party extends gimTyp.TypicalPersistentEntity {
   static readonly systemPartyName = "SYSTEM";
-  static readonly systemPartyId = 1; // should match ID of initial SYSTEM party row
+  static readonly systemPartyId = "672124b6-9894-11e5-be38-001d42e813fe"; // should match ID of initial SYSTEM party row
   readonly partyType: gimc.EnumAttribute<PartyType>;
   readonly partyName: gimc.Text;
   readonly partyUuid: gimc.UuidText;

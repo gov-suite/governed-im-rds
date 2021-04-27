@@ -8,13 +8,16 @@ export class OrganizationType
   static readonly values = new class
     implements gimc.EnumerationValues<OrganizationType> {
     readonly isEnumerationValues?: OrganizationType;
-    readonly TENANT: gimc.EnumerationValue = { id: 1, value: "Tenant" };
+    readonly TENANT: gimc.EnumerationValue = {
+      id: "40e6215d-b5c6-4896-987c-f30f3678f608",
+      value: "Tenant",
+    };
     readonly INSTITUTION: gimc.EnumerationValue = {
-      id: 2,
+      id: "6ecd8c99-4036-403d-bf84-cf8400f67836",
       value: "Institution",
     };
     readonly BUSINESS_UNIT: gimc.EnumerationValue = {
-      id: 3,
+      id: "3f333df6-90a4-4fda-8dd3-9485d27cee36",
       value: "Business Unit",
     };
   }();
