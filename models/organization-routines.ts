@@ -7,7 +7,7 @@ import type * as o from "./organization.ts";
 export class CreateOrganizationProc extends rdsTyp.TypicalStoredRoutineEntity
   implements rds.StoredProcedureCodeSupplier<CreateOrganizationProc> {
   readonly orgName: gimc.Text;
-  readonly parent: gimc.Integer;
+  readonly parent: gimc.UuidText;
   readonly orgType: gimc.Text;
   readonly email: gimc.Text;
   readonly phone: gimc.Text;
@@ -39,10 +39,10 @@ export class CreateOrganizationProc extends rdsTyp.TypicalStoredRoutineEntity
       { name: "org_name" },
     ) as gimc.Text;
 
-    this.parent = organization.parent.derive(
-      this,
-      { name: "parent" },
-    ) as gimc.Integer;
+    this.parent = this.uuidText(
+      "parent",
+    ) as gimc.UuidText;
+
     this.orgType = orgType.codeAttr.derive(
       this,
       { name: "org_type" },
