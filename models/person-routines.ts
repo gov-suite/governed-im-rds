@@ -21,7 +21,7 @@ export class CreatePersonDemographicsProc
   readonly state: gim.Text;
   readonly country: gim.Text;
   readonly zipCode: gim.Text;
-  readonly party: gim.Integer & rds.StoredRoutineArgMutabilitySupplier;
+  readonly party: gim.UuidText & rds.StoredRoutineArgMutabilitySupplier;
 
   constructor(
     readonly personDemogrFnParams:
@@ -69,12 +69,12 @@ export class CreatePersonDemographicsProc
     this.state = land.state.derive(this, { name: "state" }) as gim.Text;
     this.country = land.country.derive(this, { name: "country" }) as gim.Text;
     this.zipCode = land.zipCode.derive(this, { name: "zip_code" }) as gim.Text;
-    this.party = person.party.derive(this, {
-      name: "party_id",
-    }) as gim.Integer & rds.StoredRoutineArgMutabilitySupplier;
+    this.party = this.uuidText(
+      "party_id",
+    ) as gim.UuidText & rds.StoredRoutineArgMutabilitySupplier;
     this.party.storedRoutineArgMutability =
       rds.StoredRoutineArgMutability.InOut;
-    this.insertAttrs(person.party.derive(this, { name: "party_id" }));
+    this.insertAttrs(this.party);
     this.argAttrs?.push(
       this.firstName,
       this.middleName,

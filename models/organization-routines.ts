@@ -17,7 +17,7 @@ export class CreateOrganizationProc extends rdsTyp.TypicalStoredRoutineEntity
   readonly state: gimc.Text;
   readonly country: gimc.Text;
   readonly zipCode: gimc.Text;
-  readonly party: gimc.Integer & rds.StoredRoutineArgMutabilitySupplier;
+  readonly party: gimc.UuidText & rds.StoredRoutineArgMutabilitySupplier;
 
   constructor(
     readonly organizationParams:
@@ -65,13 +65,12 @@ export class CreateOrganizationProc extends rdsTyp.TypicalStoredRoutineEntity
     this.state = land.state.derive(this, { name: "state" }) as gimc.Text;
     this.country = land.country.derive(this, { name: "country" }) as gimc.Text;
     this.zipCode = land.zipCode.derive(this, { name: "zip_code" }) as gimc.Text;
-    this.party = organization.party.derive(
-      this,
-      { name: "party_id" },
-    ) as (gimc.Integer & rds.StoredRoutineArgMutabilitySupplier);
+    this.party = this.uuidText(
+      "party_id",
+    ) as gimc.UuidText & rds.StoredRoutineArgMutabilitySupplier;
     this.party.storedRoutineArgMutability =
       rds.StoredRoutineArgMutability.InOut;
-    this.insertAttrs(organization.party.derive(this, { name: "party_id" }));
+    this.insertAttrs(this.party);
     this.argAttrs?.push(
       this.orgName,
       this.orgType,

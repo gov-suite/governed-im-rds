@@ -56,27 +56,27 @@ export class IssueImpactMaster
     implements gimc.EnumerationValues<IssueImpactMaster> {
     readonly isEnumerationValues?: IssueImpactMaster;
     readonly DELAYS: gimc.EnumerationValue = {
-      id: 1,
+      id: "7a6167c6-70fe-41ca-ac4f-35c2b30ced53",
       value: "Delays in receiving appropriate care",
     };
     readonly PREVENTIVE_SERVICES: gimc.EnumerationValue = {
-      id: 2,
+      id: "ea83f6d6-649f-4356-9f32-18441d113762",
       value: "Inability to get preventive services",
     };
     readonly FINANCIAL_BURDENS: gimc.EnumerationValue = {
-      id: 3,
+      id: "557b5773-5cb5-41bd-b121-69081bfaa1c9",
       value: "Financial burdens",
     };
     readonly INADEQUATE: gimc.EnumerationValue = {
-      id: 4,
+      id: "2556daa1-8558-4514-855e-2db096f723fd",
       value: "Inadequate or no insurance coverage",
     };
     readonly EMOTIONAL_DISTRESS: gimc.EnumerationValue = {
-      id: 5,
+      id: "2a392198-ae37-41d4-b85e-f06909f6bb4e",
       value: "Increased emotional distress",
     };
     readonly HOSPITALIZATIONS: gimc.EnumerationValue = {
-      id: 6,
+      id: "392dc9a1-b6d3-4df2-bfe6-f3935cda73b7",
       value: "Increased hospitalizations",
     };
   }();
