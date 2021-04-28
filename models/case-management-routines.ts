@@ -9,7 +9,7 @@ export class CreateIssueDescriptionMasterProc
   readonly issueName: gimc.Text;
   readonly requestType: gimc.Integer;
   readonly issueDescriptionMasterId:
-    & gimc.Integer
+    & gimc.UuidText
     & rds.StoredRoutineArgMutabilitySupplier;
 
   constructor(
@@ -33,15 +33,14 @@ export class CreateIssueDescriptionMasterProc
       { name: "request_type" },
     ) as gimc.Integer;
 
-    this.issueDescriptionMasterId = issueDescriptionMaster.identity.derive(
-      this,
-      { name: "issue_description_master_id" },
-    ) as (gimc.Integer & rds.StoredRoutineArgMutabilitySupplier);
+    this.issueDescriptionMasterId = this.uuidText(
+      "issue_description_master_id",
+    ) as gimc.UuidText & rds.StoredRoutineArgMutabilitySupplier;
 
     this.issueDescriptionMasterId.storedRoutineArgMutability =
       rds.StoredRoutineArgMutability.InOut;
 
-    this.insertAttrs(person.party.derive(this, { name: "party_id" }));
+    this.insertAttrs(this.issueDescriptionMasterId);
     this.argAttrs?.push(
       this.issueName,
       this.requestType,
@@ -111,7 +110,7 @@ export class CreateNegativeImpactMasterProc
   implements rds.StoredProcedureCodeSupplier<CreateNegativeImpactMasterProc> {
   readonly title: gimc.Text;
   readonly issueImpactMaster:
-    & gimc.Integer
+    & gimc.UuidText
     & rds.StoredRoutineArgMutabilitySupplier;
 
   constructor(
@@ -129,15 +128,14 @@ export class CreateNegativeImpactMasterProc
       { name: "title" },
     ) as gimc.Text;
 
-    this.issueImpactMaster = issueImpactMaster.identity.derive(
-      this,
-      { name: "impact_severity_id" },
-    ) as (gimc.Integer & rds.StoredRoutineArgMutabilitySupplier);
+    this.issueImpactMaster = this.uuidText(
+      "impact_severity_id",
+    ) as gimc.UuidText & rds.StoredRoutineArgMutabilitySupplier;
 
     this.issueImpactMaster.storedRoutineArgMutability =
       rds.StoredRoutineArgMutability.InOut;
 
-    this.insertAttrs(person.party.derive(this, { name: "party_id" }));
+    this.insertAttrs(this.issueImpactMaster);
 
     this.argAttrs?.push(
       this.title,
