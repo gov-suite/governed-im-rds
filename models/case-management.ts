@@ -40,6 +40,18 @@ export class RequestType extends gimc.DefaultEnumeration<RequestType> {
       id: 9,
       value: "Calls/voicemails not being returned by staff",
     };
+    readonly RECORD_SET: gimc.EnumerationValue = {
+      id: 10,
+      value: "Designated record set",
+    };
+    readonly BILLING_RECORD: gimc.EnumerationValue = {
+      id: 11,
+      value: "Billing records",
+    };
+    readonly MISSING: gimc.EnumerationValue = {
+      id: 12,
+      value: "OpenNotes missing",
+    };
   }();
   constructor(params: gimc.EnumerationParams) {
     super(
@@ -57,11 +69,11 @@ export class IssueImpactMaster
     readonly isEnumerationValues?: IssueImpactMaster;
     readonly DELAYS: gimc.EnumerationValue = {
       id: "7a6167c6-70fe-41ca-ac4f-35c2b30ced53",
-      value: "Delays in receiving appropriate care",
+      value: "Delay in getting treatment",
     };
-    readonly PREVENTIVE_SERVICES: gimc.EnumerationValue = {
-      id: "ea83f6d6-649f-4356-9f32-18441d113762",
-      value: "Inability to get preventive services",
+    readonly SUFFER: gimc.EnumerationValue = {
+      id: "38eca71a-c937-4aed-9751-c9148006f519",
+      value: "Suffering and pain",
     };
     readonly FINANCIAL_BURDENS: gimc.EnumerationValue = {
       id: "557b5773-5cb5-41bd-b121-69081bfaa1c9",
@@ -70,10 +82,6 @@ export class IssueImpactMaster
     readonly INADEQUATE: gimc.EnumerationValue = {
       id: "2556daa1-8558-4514-855e-2db096f723fd",
       value: "Inadequate or no insurance coverage",
-    };
-    readonly EMOTIONAL_DISTRESS: gimc.EnumerationValue = {
-      id: "2a392198-ae37-41d4-b85e-f06909f6bb4e",
-      value: "Increased emotional distress",
     };
     readonly HOSPITALIZATIONS: gimc.EnumerationValue = {
       id: "392dc9a1-b6d3-4df2-bfe6-f3935cda73b7",
@@ -138,6 +146,7 @@ export class SourceNature extends gimc.DefaultEnumeration<SourceNature> {
     };
     readonly PHYSICIAN: gimc.EnumerationValue = { id: 2, value: "Physician" };
     readonly PRACTICE: gimc.EnumerationValue = { id: 3, value: "Practice" };
+    readonly RADIOLOGY: gimc.EnumerationValue = { id: 4, value: "Radiology" };
   }();
   constructor(params: gimc.EnumerationParams) {
     super(
