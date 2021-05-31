@@ -190,7 +190,9 @@ export class PersonDemographicsView extends rdsTyp.TypicalViewEntity
     );
     // TODO: reuse the PersonDemographicsTypeDefn instead of copy/paste
     const person = personDemogrParams.personFactory.person;
+    const personType = personDemogrParams.personFactory.personType;
     const land = personDemogrParams.contactFactory.land;
+    const tele = personDemogrParams.contactFactory.telephonic;
     const party = personDemogrParams.partyFactory.party;
     this.insertAttrs(
       person.identity.derive(this),
@@ -206,6 +208,11 @@ export class PersonDemographicsView extends rdsTyp.TypicalViewEntity
       land.country.derive(this),
       land.zipCode.derive(this),
       party.partyUuid.derive(this),
+      personType.valueAttr.derive(this, {
+        "name": "person_type",
+      }),
+      personType.identity.derive(this, { name: "record_status" }),
+      tele.number.derive(this, { name: "phone_number" }),
     );
   }
 
@@ -218,9 +225,11 @@ export class PersonDemographicsView extends rdsTyp.TypicalViewEntity
       sql: rds.interpolateEntityAttrNamesInSQL(ctx, {
         sql: `
         SELECT {person.identity}, {person:firstName}, {person:middleName}, {person:lastName}, {contactElec:details}, {person:dob}, {contactLand:line1},
-        {contactLand:line2}, {contactLand:city}, {contactLand:state}, {contactLand:country}, {contactLand:zipCode}, {party:partyUuid}
+        {contactLand:line2}, {contactLand:city}, {contactLand:state}, {contactLand:country}, {contactLand:zipCode}, {party:partyUuid},
+        {personType.valueAttr} as person_type, person.{person:recordStatus}, {contactTele:number} as phone_number
         FROM {party} 
                INNER JOIN {person} ON {party.identity} = {person.identity}
+               LEFT JOIN {personType}  ON {person.personType} = {personType.identity}
                LEFT JOIN {contactLand} ON {party.identity} = {contactLand.party}
                LEFT JOIN {contactElec} ON {party.identity} = {contactElec.party}
                LEFT JOIN {contactTele} ON {party.identity} = {contactTele.party}
@@ -228,6 +237,7 @@ export class PersonDemographicsView extends rdsTyp.TypicalViewEntity
         with: {
           party: this.personDemogrParams.partyFactory.party,
           person: this.personDemogrParams.personFactory.person,
+          personType: this.personDemogrParams.personFactory.personType,
           contactLand: this.personDemogrParams.contactFactory.land,
           contactElec: this.personDemogrParams.contactFactory.electronic,
           contactTele: this.personDemogrParams.contactFactory.telephonic,
