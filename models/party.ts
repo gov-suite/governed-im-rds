@@ -47,6 +47,16 @@ export class PartyIdentifierSource
   static readonly values = new class
     implements gimc.EnumerationValues<PartyIdentifierSource> {
     readonly isEnumerationValues?: PartyIdentifierSource;
+    readonly DL: gimc.EnumerationValue = {
+      id: 1,
+      code: "driving_license",
+      value: "Driving License",
+    };
+    readonly PT: gimc.EnumerationValue = {
+      id: 2,
+      code: "passport",
+      value: "Passport",
+    };
   }();
 
   constructor(params: gimc.EnumerationParams) {
