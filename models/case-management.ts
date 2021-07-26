@@ -123,9 +123,8 @@ export class RequestPriority extends gimc.DefaultEnumeration<RequestPriority> {
   static readonly values = new class
     implements gimc.EnumerationValues<RequestPriority> {
     readonly isEnumerationValues?: RequestPriority;
-    readonly LOW: gimc.EnumerationValue = { id: 1, value: "Low" };
-    readonly HIGH: gimc.EnumerationValue = { id: 2, value: "High" };
-    readonly NORMAL: gimc.EnumerationValue = { id: 3, value: "Normal" };
+    readonly HIGH: gimc.EnumerationValue = { id: 1, value: "High" };
+    readonly NORMAL: gimc.EnumerationValue = { id: 2, value: "Standard" };
   }();
   constructor(params: gimc.EnumerationParams) {
     super(
